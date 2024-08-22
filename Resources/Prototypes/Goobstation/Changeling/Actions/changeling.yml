@@ -486,6 +486,23 @@
     useInLesserForm: true
 
 - type: entity
+  id: ActionLastResort
+  name: Last Resort
+  description: Survive. Costs 20 chemicals.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    useDelay: 5
+    checkCanInteract: false
+    itemIconStyle: NoItem
+    icon:
+      sprite: Goobstation/Changeling/changeling_abilities.rsi
+      state: lesser_form
+    event: !type:ActionLastResortEvent {}
+  - type: ChangelingAction
+    chemicalCost: 20
+
+- type: entity
   id: ActionToggleLesserForm
   name: Lesser Form
   description: Abandon your current form and transform into a monkey. Costs 20 chemicals.

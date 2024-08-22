@@ -12,6 +12,9 @@
     - CanPilot
     - BypassInteractionRangeChecks
     - BypassDropChecks
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 30
+    baseWalkSpeed: 10
   - type: Input
     context: "aghost"
   - type: Ghost
