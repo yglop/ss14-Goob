@@ -42,15 +42,3 @@
         - type: StationJobs
           availableJobs:
             ChiefEngineer: [ -1, -1 ]
-            
-- type: gameMap
-  id: Travertine
-  mapName: Travertine
-  mapPath: /Maps/Test/travertine.yml
-  minPlayers: 0
-  stations:
-    Travertine:
-      stationProto: StandardNanotrasenStation
-      components:
-        - type: StationNameSetup
-          mapNameTemplate: "Travertine"
