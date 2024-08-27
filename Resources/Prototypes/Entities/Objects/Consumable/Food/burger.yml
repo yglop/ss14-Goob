@@ -31,10 +31,11 @@
   id: FoodBreadBunBottom
   parent: FoodBreadSliceBase
   name: bottom bun
-  description: It's time to start building the burger tower. 
+  description: It's time to start building the burger tower.
   components:
   - type: Item
-    size: Normal #patch until there is an adequate resizing system in place 
+    shape:
+    - 0,0,1,0
   - type: Food
   - type: Sprite
     drawdepth: Mobs
@@ -45,7 +46,8 @@
     - map: ["foodSequenceLayers"]
   - type: FoodSequenceStartPoint
     key: burger
-    maxLayers: 10
+    acceptAll: true # Goobstation - anythingburgers
+    maxLayers: 12 # Goobstation - anythingburgers
     startPosition: 0, 0
     offset: 0, 0.1
     minLayerOffset: -0.05, 0
@@ -65,7 +67,7 @@
   id: FoodBreadBunTop
   parent: FoodBreadSliceBase
   name: top bun
-  description: the perfect finish for your burger tower
+  description: The perfect finish for your burger tower.
   components:
   - type: Food
   - type: Sprite
@@ -86,7 +88,6 @@
     entries:
       burger:
         final: true
-  
 # Base
 
 - type: entity
@@ -687,7 +688,7 @@
   description: An elusive rib shaped burger with limited availability across the galaxy. Not as good as you remember it.
   components:
   - type: Food
-    trash: 
+    trash:
     - FoodKebabSkewer
   - type: FlavorProfile
     flavors:
@@ -987,4 +988,3 @@
   - type: Tag
     tags:
     - Meat
-    

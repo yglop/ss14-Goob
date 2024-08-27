@@ -414,7 +414,7 @@ Entries:
     - type: Add
       message: >-
         Added gamemodes to secret with two antags at once, but have less of one
-        type and need 30+ Players ready to start. 
+        type and need 30+ Players ready to start.
     - type: Tweak
       message: >-
         Weights have been slightly tweaked. Lings are rarer, and ops/revs are
@@ -422,7 +422,7 @@ Entries:
     - type: Tweak
       message: >-
         Changeling now rolls with the same delay as traitors, and changeling max
-        has been lessened to 5. 
+        has been lessened to 5.
   id: 53
   time: '2024-07-18T17:39:51.0000000+00:00'
 - author: Aidenkrz
@@ -703,3 +703,33 @@ Entries:
       message: The Syndicate has updated their drip to match the new fashion standart
   id: 91
   time: '2024-08-15T08:45:17.0000000+00:00'
+- author: silver2127
+  changes:
+    - type: Tweak
+      message: Rev victory ends game instead of calling shuttle
+  id: 92
+  time: '2024-08-16T09:59:42.0000000+00:00'
+- author: Aidenkrz
+  changes:
+    - type: Remove
+      message: Vulps and Harpies are no longer colorblind.
+    - type: Tweak
+      message: >-
+        Syndicate microwave has a smaller chance to explode when microwaving
+        IDs.
+    - type: Tweak
+      message: Normal microwave has chance to explode when microwaving IDs.
+    - type: Tweak
+      message: You can now put any items on a burger.
+    - type: Fix
+      message: Tranquility now affects all species.
+    - type: Tweak
+      message: Tranquility now affects mobs, not just players.
+  id: 93
+  time: '2024-08-18T22:58:35.0000000+00:00'
+- author: outget
+  changes:
+    - type: Add
+      message: Added new lobby song!
+  id: 94
+  time: '2024-08-25T00:44:24.0000000+00:00'
