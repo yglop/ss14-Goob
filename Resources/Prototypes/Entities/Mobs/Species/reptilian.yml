@@ -5,7 +5,6 @@
   id: BaseMobReptilian
   abstract: true
   components:
-  - type: Absorbable # Goobstation - changelings
   - type: HumanoidAppearance
     species: Reptilian
     hideLayersOnEquip:
@@ -74,7 +73,9 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
-
+  - type: FootPrints # WD EDIT
+    leftBarePrint: "footprint-left-bare-lizard"
+    rightBarePrint: "footprint-right-bare-lizard"
 
 - type: entity
   parent: BaseSpeciesDummy

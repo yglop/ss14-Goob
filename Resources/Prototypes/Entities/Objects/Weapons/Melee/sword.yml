@@ -15,6 +15,9 @@
   - type: Utensil
     types:
       - Knife
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   name: captain's sabre
@@ -25,6 +28,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Melee/captain_sabre.rsi
   - type: MeleeWeapon
+    heavyStaminaCost: 2.5 # goob edit
     attackRate: 1.5
     damage:
       types:
@@ -161,7 +165,7 @@
   - type: DisarmMalus
 
 - type: entity
-  name: Throngler
+  name: throngler
   parent: [ BaseSword, BaseMajorContraband ]
   id: Throngler
   description: Why would you make this?

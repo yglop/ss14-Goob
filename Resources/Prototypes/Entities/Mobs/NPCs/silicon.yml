@@ -66,6 +66,7 @@
   - type: Tag
     tags:
     - DoorBumpOpener
+    - Bot
   - type: MobState
     allowedStates:
       - Alive
@@ -103,12 +104,60 @@
     - Robotics
   - type: Speech
     speechVerb: Robotic
+    speechSounds: Pai #couldn't decide if this should be borg or pai sounds so I flipped a coin.
   - type: TypingIndicator
     proto: robot
   - type: ZombieImmune
-  - type: StepTriggerImmune
+  - type: ProtectedFromStepTriggers
   - type: NoSlip
   - type: Insulated
+
+- type: entity
+  parent: MobSiliconBase
+  id: MobFireBot
+  name: firebot
+  description: A little fire extinguishing bot. He looks rather anxious.
+  components:
+  - type: Sprite
+    sprite: Mobs/Silicon/Bots/firebot.rsi
+    state: firebot
+  - type: Construction
+    graph: FireBot
+    node: bot
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-mechanical
+  - type: HTN
+    rootTask:
+      task: FirebotCompound
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 10
+        reagents:
+        - ReagentId: Water
+          Quantity: 10
+  - type: SolutionRegeneration
+    solution: spray
+    generated:
+      reagents:
+        - ReagentId: Water
+          Quantity: 10
+  - type: Spray
+    transferAmount: 10
+    pushbackAmount: 60
+    spraySound:
+      path: /Audio/Effects/extinguish.ogg
+    sprayedPrototype: ExtinguisherSpray
+    vaporAmount: 1
+    vaporSpread: 90
+    sprayVelocity: 3.0
+  - type: UseDelay
+    delay: 4
+  - type: InteractionPopup
+    interactSuccessString: petting-success-firebot
+    interactFailureString: petting-failure-firebot
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
 
 - type: entity
   parent: MobSiliconBase
@@ -249,6 +298,8 @@
       path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: Item # Goobstation
     size: Large
+  - type: StationAiVision # Goobstation - AI can see through NT silicon
+    range: 0
 
 - type: entity
   parent:
@@ -286,7 +337,7 @@
           enum.DamageStateVisualLayers.BaseUnshaded:
             powered: Rainbow
   - type: Sprite
-    sprite: Goobstation/Mobs/Silicon/Bots/medibot.rsi
+    sprite: _Goobstation/Mobs/Silicon/Bots/medibot.rsi
     layers:
       - state: medibot
         map: [ "enum.DamageStateVisualLayers.Base" ]
@@ -318,6 +369,8 @@
     pack: MedibotAds
   - type: Inventory
     templateId: medibot
+  - type: StationAiVision # Goobstation - AI can see through NT silicon
+    range: 1
 
 - type: entity
   parent:
@@ -411,8 +464,11 @@
     tags:
     - DoorBumpOpener
     - FootstepSound
+    - Bot
   - type: ActiveRadio
     channels:
     - Binary
     - Common
     - Supply
+  - type: StationAiVision # Goobstation - AI can see through NT silicon
+    range: 1

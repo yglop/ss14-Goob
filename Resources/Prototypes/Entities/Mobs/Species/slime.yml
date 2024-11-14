@@ -4,7 +4,6 @@
   id: BaseMobSlimePerson
   abstract: true
   components:
-  - type: Absorbable # Goobstation - changelings
   - type: Hunger
   - type: Thirst
   - type: Icon
@@ -29,6 +28,8 @@
     interfaces:
       enum.VoiceMaskUIKey.Key:
         type: VoiceMaskBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
       enum.HumanoidMarkingModifierKey.Key:
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
@@ -36,8 +37,8 @@
       # Goobstation - changelings
       enum.StoreUiKey.Key:
         type: StoreBoundUserInterface
-      enum.StorageUiKey.Key:
-        type: StorageBoundUserInterface
+      enum.HereticLivingHeartKey.Key: # goob edit - heretics
+        type: LivingHeartMenuBoundUserInterface
   # to prevent bag open/honk spam
   - type: UseDelay
     delay: 0.5
@@ -122,6 +123,9 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  - type: FootPrints # WD EDIT
+    leftBarePrint: "footprint-left-bare-slime"
+    rightBarePrint: "footprint-right-bare-slime"
 
 - type: entity
   parent: MobHumanDummy

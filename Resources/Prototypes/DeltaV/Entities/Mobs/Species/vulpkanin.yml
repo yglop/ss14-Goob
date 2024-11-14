@@ -5,7 +5,6 @@
   id: BaseMobVulpkanin
   abstract: true
   components:
-  - type: Absorbable # Goobstation - changelings
   - type: HumanoidAppearance
     species: Vulpkanin
   - type: Hunger
@@ -90,7 +89,8 @@
   - type: Damageable
     damageModifierSet: Vulpkanin
   - type: TemperatureProtection
-    coefficient: 0.1
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
   - type: Vocal
     sounds:
       Male: MaleVulpkanin
@@ -102,13 +102,14 @@
     - FootstepSound
     - DoorBumpOpener
     - VulpEmotes
+  - type: FootPrints # WD EDIT
 
 - type: entity
   save: false
   name: Vulpkanin Dummy
   parent: MobHumanDummy
   id: MobVulpkaninDummy
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   description: A dummy vulpkanin meant to be used in character setup.
   components:
   - type: HumanoidAppearance

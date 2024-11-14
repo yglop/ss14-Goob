@@ -63,6 +63,7 @@
       Male: MaleFelinid
       Female: FemaleFelinid
       Unsexed: MaleFelinid
+  #- type: OwOAccent this is just like that book by jorjorwell... 1984
   - type: Felinid
   - type: NoShoesSilentFootsteps
   - type: Tag
@@ -71,13 +72,14 @@
     - FootstepSound
     - DoorBumpOpener
     - FelinidEmotes
+  - type: FootPrints # WD EDIT
 
 - type: entity
   save: false
   name: Urist McHands
   parent: MobHumanDummy
   id: MobFelinidDummy
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   description: A dummy felinid meant to be used in character setup.
   components:
   - type: HumanoidAppearance

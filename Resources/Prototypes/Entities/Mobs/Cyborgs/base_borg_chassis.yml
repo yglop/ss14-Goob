@@ -72,6 +72,9 @@
   - type: ActivatableUI
     key: enum.BorgUiKey.Key
   - type: SiliconLawBound
+  - type: ActionGrant
+    actions:
+    - ActionViewLaws
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
@@ -82,6 +85,7 @@
   - type: Hands
     showInHands: false
     disableExplosionRecursion: true
+    canBeStripped: false
   - type: ComplexInteraction
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
@@ -118,14 +122,16 @@
     cellSlotId: cell_slot
     fitsInCharger: true
   - type: ItemToggle
+    onActivate: false # You should not be able to turn off a borg temporarily.
     activated: false # gets activated when a mind is added
     onUse: false # no item-borg toggling sorry
-    toggleLight: false
+  - type: ItemTogglePointLight
   - type: AccessToggle
   # TODO: refactor movement to just be based on toggle like speedboots but for the boots themselves
   # TODO: or just have sentient speedboots be fast idk
   - type: PowerCellDraw
     drawRate: 0.6
+  # no ToggleCellDraw since dont want to lose access when power is gone
   - type: ItemSlots
     slots:
       cell_slot:
@@ -162,6 +168,7 @@
   - type: LockedWiresPanel
   - type: Damageable
     damageContainer: Silicon
+    damageModifierSet: Silicon #Goobstation - Iondamage
   - type: Destructible
     thresholds:
     - trigger:
@@ -229,7 +236,7 @@
     guides:
     - Cyborgs
     - Robotics
-  - type: StepTriggerImmune
+  - type: ProtectedFromStepTriggers
   - type: DamageOnInteractProtection
     damageProtection:
       flatReductions:
@@ -280,6 +287,8 @@
     access: [["Command"], ["Research"]]
   - type: ShowJobIcons
   - type: ShowMindShieldIcons
+  - type: StationAiVision # Goobstation - AI can see through NT silicon
+    range: 3
 
 - type: entity
   id: BaseBorgChassisSyndicate
@@ -313,3 +322,9 @@
       Unsexed: UnisexSiliconSyndicate
   - type: PointLight
     color: "#dd200b"
+  - type: Damageable #Goobstation - Ion Damage
+    damageContainer: Silicon
+    damageModifierSet: SiliconProtected
+  - type: ExplosionResistance #Goobstation - Ion Damage
+    damageCoefficient: 0.5
+  - type: FlashImmunity

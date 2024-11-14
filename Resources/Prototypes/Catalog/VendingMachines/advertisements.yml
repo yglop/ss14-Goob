@@ -23,6 +23,12 @@
     count: 19
 
 - type: localizedDataset
+  id: BruiseOMatAds
+  values:
+    prefix: advertisement-bruiseomat-
+    count: 15
+
+- type: localizedDataset
   id: CargoDrobeAds
   values:
     prefix: advertisement-cargodrobe-
@@ -260,4 +266,5 @@
   id: MedibotAds
   values:
     prefix: advertisement-medibot-
-    count: 17
+    # Goobstation - Medibot AM advertisement; originally 17
+    count: 18

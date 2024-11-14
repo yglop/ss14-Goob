@@ -1,3 +1,4 @@
+using Content.Server.RoundEnd;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -27,4 +28,9 @@ public sealed partial class RevolutionaryRuleComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan ShuttleCallTime = TimeSpan.FromMinutes(5);
+
+    // goob edit start
+    [DataField] public bool HasAnnouncementPlayed = false;
+    [DataField] public bool HasRevAnnouncementPlayed = false;
+    // gobo edit end
 }

@@ -5,7 +5,6 @@
   id: MobHarpyBase
   abstract: true
   components:
-  - type: Absorbable # Goobstation - changelings
   - type: HarpySinger
   - type: Instrument
     allowPercussion: false
@@ -30,6 +29,11 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      # Goobstation - changelings
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+      enum.HereticLivingHeartKey.Key: # goob edit - heretics
+        type: LivingHeartMenuBoundUserInterface
   - type: Sprite
     scale: 0.9, 0.9
     layers:
@@ -133,13 +137,16 @@
     - FootstepSound
     - DoorBumpOpener
     - HarpyEmotes
+  - type: FootPrints
+    leftBarePrint: "footprint-left-bare-lizard"
+    rightBarePrint: "footprint-right-bare-lizard"
 
 - type: entity
   save: false
   name: Urist McHands
   parent: MobHumanDummy
   id: MobHarpyDummy
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   description: A dummy Harpy meant to be used in character setup.
   components:
   - type: HumanoidAppearance
@@ -193,7 +200,7 @@
   id: ActionHarpyPlayMidi
   name: Play MIDI
   description: Sing your heart out! Right click yourself to set an instrument.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     checkCanInteract: false
@@ -205,7 +212,7 @@
   id: ActionSyrinxChangeVoiceMask
   name: Set name
   description: Change the name others hear to something else.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     icon: DeltaV/Interface/Actions/harpy_syrinx.png

@@ -8,6 +8,7 @@ using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Research.Components;
 
 namespace Content.Shared.Materials;
 
@@ -34,6 +35,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
 
         SubscribeLocalEvent<MaterialStorageComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<MaterialStorageComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<MaterialStorageComponent, TechnologyDatabaseModifiedEvent>(OnDatabaseModified);
     }
 
     public override void Update(float frameTime)
@@ -312,6 +314,11 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         args.Handled = TryInsertMaterialEntity(args.User, args.Used, uid, component);
     }
 
+    private void OnDatabaseModified(Entity<MaterialStorageComponent> ent, ref TechnologyDatabaseModifiedEvent args)
+    {
+        UpdateMaterialWhitelist(ent);
+    }
+
     public int GetSheetVolume(MaterialPrototype material)
     {
         if (material.StackEntity == null)
@@ -323,18 +330,5 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
             return DefaultSheetVolume;
 
         return composition.MaterialComposition.FirstOrDefault(kvp => kvp.Key == material.ID).Value;
-    }
-
-    // Goobstation
-    public bool TryChangeStorageLimit(
-        EntityUid uid,
-        int value,
-        MaterialStorageComponent? storage = null)
-    {
-        if (!Resolve(uid, ref storage) || value < 0)
-            return false;
-
-        storage.StorageLimit = value;
-        return true;
     }
 }
