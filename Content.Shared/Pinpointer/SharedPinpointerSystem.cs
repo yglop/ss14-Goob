@@ -17,6 +17,8 @@ public abstract class SharedPinpointerSystem : EntitySystem
         SubscribeLocalEvent<PinpointerComponent, GotEmaggedEvent>(OnEmagged);
         SubscribeLocalEvent<PinpointerComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<PinpointerComponent, ExaminedEvent>(OnExamined);
+        
+        SubscribeLocalEvent<PinpointerComponent, PinpointerOverwriteEvent>(OverwriteTarget); // Goobstation
     }
 
     /// <summary>
@@ -139,5 +141,16 @@ public abstract class SharedPinpointerSystem : EntitySystem
     {
         args.Handled = true;
         component.CanRetarget = true;
+    }
+
+    // Goobstation
+    public void OverwriteTarget(EntityUid uid, PinpointerComponent component, PinpointerOverwriteEvent args)
+    {
+        component.component = args.component;
+        component.TargetName = args.TargetName;
+        if (component.isActive)
+        {
+            TogglePinpointer(uid, component);
+        }
     }
 }
